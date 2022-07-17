@@ -1,9 +1,15 @@
 import React from 'react';
 
-export const Post = () => {
+type PostPropsType = {
+    postText: string;
+    likesCount: number;
+}
+
+export const Post = (props: PostPropsType) => {
     return (
         <div>
-            POST 1
+            <span style={{paddingRight: '10px'}}>Post: {props.postText}</span>
+            <span>Like: {props.likesCount}</span>
         </div>
     );
 };
