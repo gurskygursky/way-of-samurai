@@ -4,7 +4,7 @@ import {ProfileDescription} from '../../components/profile/ProfileDescription';
 
 export const Profile = () => {
     return (
-        <div className={'content'}>
+        <div>
             <ProfileDescription/>
             <Posts/>
         </div>

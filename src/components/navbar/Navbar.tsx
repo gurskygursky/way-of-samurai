@@ -10,6 +10,7 @@ export const Navbar = () => {
                 <div>
                     <a>News</a>
                 </div>
+
                 <div>
                     <a>Messages</a>
                 </div>

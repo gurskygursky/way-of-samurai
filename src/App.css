@@ -33,6 +33,7 @@
 .app-wrapper-content {
   grid-area: content;
   border: white solid 2px;
+  background-color: cornflowerblue;
 }
 
 
