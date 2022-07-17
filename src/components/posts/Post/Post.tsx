@@ -1,4 +1,6 @@
 import React from 'react';
+import style from './Post.module.css';
+import avatar from '../../../assets/images/avatar.png';
 
 type PostPropsType = {
     postText: string;
@@ -7,7 +9,8 @@ type PostPropsType = {
 
 export const Post = (props: PostPropsType) => {
     return (
-        <div>
+        <div className={style.post}>
+            <img src={avatar}/>
             <span style={{paddingRight: '10px'}}>Post: {props.postText}</span>
             <span>Like: {props.likesCount}</span>
         </div>
