@@ -1,15 +1,15 @@
 import React from 'react';
 import style from './Dialogs.module.css';
-import {Dialog} from '../../components/dialogs/Dialog/Dialog';
+import {DialogItem} from '../../components/dialogs/Dialog/DialogItem/DialogItem';
 
 export const Dialogs = () => {
     return (
         <div className={style.dialogsWrapper}>
-            <Dialog/>
-            <ul className={style.messages} style={{listStyle: 'none'}}>
-                <li className={style.message}>Hi!</li>
-                <li className={style.message}>Hello World!</li>
-                <li className={style.message}>Yo!</li>
+            <ul style={{listStyle: 'none'}}>
+                <DialogItem userName={'Dimych'}/>
+                <DialogItem userName={'Sveta'}/>
+                <DialogItem userName={'Valera'}/>
+                <DialogItem userName={'Viktor'}/>
             </ul>
         </div>
     );

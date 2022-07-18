@@ -1,31 +1,14 @@
 import React from 'react';
 import style from './Dialog.module.css';
-import {Link} from 'react-router-dom';
+import {Message} from '../../messages/message/Message';
 
 export const Dialog = () => {
     return (
         <div className={style.dialogsList}>
-            <ul style={{listStyle: 'none'}}>
-                <li>
-                    <Link to={'/messages/dimych'} className={style.dialog}>
-                        Dimych
-                    </Link>
-                </li>
-                <li>
-                    <Link to={'/messages/sveta'} className={style.dialog}>
-                        Sveta
-                    </Link>
-                </li>
-                <li>
-                    <Link to={'/messages/valera'} className={style.dialog}>
-                        Valera
-                    </Link>
-                </li>
-                <li>
-                    <Link to={'/messages/viktor'} className={style.dialog}>
-                        Viktor
-                    </Link>
-                </li>
+            <ul className={style.messages} style={{listStyle: 'none'}}>
+                <Message message={'Yo!'}/>
+                <Message message={'Hello!'}/>
+                <Message message={'Hello World!'}/>
             </ul>
         </div>
     );
