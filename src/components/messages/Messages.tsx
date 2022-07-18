@@ -1,9 +1,8 @@
 import React from 'react';
+import {Dialogs} from '../../components/dialogs/Dialogs';
 
 export const Messages = () => {
     return (
-        <div>
-            <div>DIALOGS</div>
-        </div>
+            <Dialogs/>
     );
 };
