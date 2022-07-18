@@ -1,24 +1,20 @@
 import React from 'react';
 import style from './Dialog.module.css';
 import {Message} from '../../messages/message/Message';
+import {MessageType} from '../../../index';
 
-export const Dialog = () => {
+type DialogPropsType = {
+    arrayMessages: MessageType[];
+}
 
-    const arrayMessages = [
-        {id: 1, message: 'Yo!'},
-        {id: 2, message: 'Hello!'},
-        {id: 3, message: 'Hello World!'},
-    ];
+export const Dialog = (props: DialogPropsType) => {
 
-    const messageItems = arrayMessages.map(item => <Message message={item.message}/>);
+    const messageItems = props.arrayMessages.map(item => <Message message={item.message}/>);
 
     return (
         <div className={style.dialogsList}>
             <ul className={style.messages} style={{listStyle: 'none'}}>
                 {messageItems}
-                {/*<Message message={'Yo!'}/>*/}
-                {/*<Message message={'Hello!'}/>*/}
-                {/*<Message message={'Hello World!'}/>*/}
             </ul>
         </div>
     );
