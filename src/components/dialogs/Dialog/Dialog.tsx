@@ -1,7 +1,8 @@
 import React from 'react';
 import style from './Dialog.module.css';
 import {Message} from '../../messages/message/Message';
-import {MessageType} from '../../../index';
+import { MessageType } from '../../../redux/state';
+// import {MessageType} from '../../../index';
 
 type DialogPropsType = {
     arrayMessages: MessageType[];

@@ -6,12 +6,14 @@ import {Footer} from './components/footer/Footer';
 import {Profile} from './components/profile/Profile';
 import {Messages} from './components/messages/Messages';
 import {Route, Routes} from 'react-router-dom';
-import {DialogType, MessageType, PostType} from './index';
+// import {DialogType, MessageType, PostType} from './index';
+import {stateType} from './redux/state';
 
 type AppPropsType = {
-    arrayMessages: MessageType[];
-    arrayPosts: PostType[];
-    arrayDialogs: DialogType[];
+    state: stateType;
+    // arrayMessages: MessageType[];
+    // arrayPosts: PostType[];
+    // arrayDialogs: DialogType[];
 }
 
 export function App(props: AppPropsType) {
@@ -22,9 +24,9 @@ export function App(props: AppPropsType) {
             <Footer/>
             <div className={'app-wrapper-content'}>
                 <Routes>
-                    <Route path="/profile" element={<Profile arrayPosts={props.arrayPosts}/>}/>
-                    <Route path={'/messages'} element={<Messages arrayDialogs={props.arrayDialogs}
-                                                                 arrayMessages={props.arrayMessages}
+                    <Route path="/profile" element={<Profile arrayPosts={props.state.arrayPosts}/>}/>
+                    <Route path={'/messages'} element={<Messages arrayDialogs={props.state.arrayDialogs}
+                                                                 arrayMessages={props.state.arrayMessages}
                     />}/>
                 </Routes>
             </div>
