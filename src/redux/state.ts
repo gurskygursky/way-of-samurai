@@ -35,3 +35,8 @@ export const state: stateType = {
         {id: 2, postText: 'My second post!', likesCount: 10},
     ],
 }
+
+export const addPost = (newPostText: string) => {
+    const newPost = {id: 3, postText: newPostText, likesCount: 33};
+    state.arrayPosts.push(newPost);
+}
