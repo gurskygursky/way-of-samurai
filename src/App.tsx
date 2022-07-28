@@ -7,20 +7,23 @@ import {Profile} from './components/profile/Profile';
 import {Messages} from './components/messages/Messages';
 import {Route, Routes} from 'react-router-dom';
 // import {DialogType, MessageType, PostType} from './index';
-import {stateType} from './redux/state';
+import {StoreType} from './redux/state';
 
 type AppPropsType = {
-    state: stateType;
+    // state: stateType;
+    store: StoreType;
     // addPost: (newPostText: string) => void;
-    addPost: () => void;
-    newPost: string;
-    updateNewPost: (newPostText: string) => void;
+    // addPost: () => void;
+    // newPost: string;
+    // updateNewPost: (newPostText: string) => void;
     // arrayMessages: MessageType[];
     // arrayPosts: PostType[];
     // arrayDialogs: DialogType[];
 }
 
 export function App(props: AppPropsType) {
+    const state = props.store.getState();
+
     return (
         <div className={'app-wrapper'}>
             <Header/>
@@ -28,9 +31,12 @@ export function App(props: AppPropsType) {
             <Footer/>
             <div className={'app-wrapper-content'}>
                 <Routes>
-                    <Route path="/profile" element={<Profile arrayPosts={props.state.arrayPosts} addPost={props.addPost} newPost={props.newPost} updateNewPost={props.updateNewPost}/>}/>
-                    <Route path={'/messages'} element={<Messages arrayDialogs={props.state.arrayDialogs}
-                                                                 arrayMessages={props.state.arrayMessages}
+                    <Route path="/profile" element={<Profile arrayPosts={state.profilePage.arrayPosts}
+                                                             addPost={props.store.addPost.bind(props.store)}
+                                                             newPost={state.profilePage.newPost}
+                                                             updateNewPost={props.store.updateNewPost.bind(props.store)}/>}/>
+                    <Route path={'/messages'} element={<Messages arrayDialogs={state.messagesPage.arrayDialogs}
+                                                                 arrayMessages={state.messagesPage.arrayMessages}
                     />}/>
                 </Routes>
             </div>

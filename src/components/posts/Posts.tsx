@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {Post} from '../../components/posts/Post/Post';
 // import {PostType} from '../../index';
-import {PostType, stateType} from '../../redux/state';
+import {PostType} from '../../redux/state';
 
 type PostsPropsType = {
     // state: stateType;
