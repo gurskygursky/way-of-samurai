@@ -7,13 +7,16 @@ import {PostType, stateType} from './../../redux/state';
 type ProfilePropsType = {
     // state: stateType;
     arrayPosts: PostType[];
-    addPost: (newPostText: string) => void;
+    // addPost: (newPostText: string) => void;
+    addPost: () => void;
+    newPost: string;
+    updateNewPost: (newPostText: string) => void;
 }
 export const Profile = (props: ProfilePropsType) => {
     return (
         <div>
             <ProfileDescription/>
-            <Posts arrayPosts={props.arrayPosts} addPost={props.addPost}/>
+            <Posts arrayPosts={props.arrayPosts} addPost={props.addPost} newPost={props.newPost} updateNewPost={props.updateNewPost}/>
         </div>
     );
 };

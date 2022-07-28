@@ -6,7 +6,10 @@ import {PostType, stateType} from '../../redux/state';
 type PostsPropsType = {
     // state: stateType;
     arrayPosts: PostType[];
-    addPost: (newPostText: string) => void;
+    // addPost: (newPostText: string) => void;
+    addPost: () => void;
+    newPost: string;
+    updateNewPost: (newPostText: string) => void;
 }
 export const Posts = (props: PostsPropsType) => {
 
@@ -15,18 +18,20 @@ export const Posts = (props: PostsPropsType) => {
     const [inputValue, setInputValue] = useState<string>('');
 
     const addPost = () => {
-        props.addPost(inputValue);
-        setInputValue('');
+        props.addPost();
+        console.log(props.arrayPosts);
+        // setInputValue('')
     }
     const onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             addPost();
-            setInputValue('');
+            // setInputValue('');
         }
     }
 
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement> ) => {
-        setInputValue(event.currentTarget.value);
+        props.updateNewPost(event.currentTarget.value);
+        // setInputValue(event.currentTarget.value);
     }
 
 
@@ -34,7 +39,8 @@ export const Posts = (props: PostsPropsType) => {
         <div>
             MY POST
             <div>
-                <input value={inputValue} onChange={onChangeHandler} onKeyDown={onKeyPressHandler}/>
+                {/*<input value={inputValue} onChange={onChangeHandler} onKeyDown={onKeyPressHandler}/>*/}
+                <input value={props.newPost} onChange={onChangeHandler} onKeyDown={onKeyPressHandler}/>
                 <button onClick={addPost}>Add post</button>
             </div>
             {postItems}

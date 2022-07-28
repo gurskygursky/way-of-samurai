@@ -4,7 +4,7 @@ import './index.css';
 import {App} from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
-import {addPost, state} from './redux/state';
+import {addPost, state, stateType, subscribe, updateNewPost} from './redux/state';
 
 // export type MessageType = {
 //     id: number;
@@ -36,17 +36,32 @@ import {addPost, state} from './redux/state';
 //     {id: 1, postText: 'My first post!', likesCount: 10},
 //     {id: 2, postText: 'My second post!', likesCount: 10},
 // ];
+// const root = ReactDOM.createRoot(
+//     document.getElementById('root') as HTMLElement
+// );
+// root.render(
+//     // <React.StrictMode>
+//     <BrowserRouter>
+//         <App state={state} addPost={addPost} updateNewPost={updateNewPost}/>
+//     </BrowserRouter>
+//     // </React.StrictMode>
+// );
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+export let rerenderEntireTree = (state: stateType) =>{
 
-const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-);
-root.render(
-    // <React.StrictMode>
-    <BrowserRouter>
-        <App state={state} addPost={addPost}/>
-    </BrowserRouter>
-    // </React.StrictMode>
-);
+    root.render(
+        <React.StrictMode>
+            <BrowserRouter>
+            <App state={state}
+                 addPost={addPost}
+                 newPost={state.newPost}
+                updateNewPost={updateNewPost}/>
+                </BrowserRouter>
+        </React.StrictMode>
+    );}
+
+rerenderEntireTree(state);
+subscribe(rerenderEntireTree);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

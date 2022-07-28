@@ -11,7 +11,10 @@ import {stateType} from './redux/state';
 
 type AppPropsType = {
     state: stateType;
-    addPost: (newPostText: string) => void;
+    // addPost: (newPostText: string) => void;
+    addPost: () => void;
+    newPost: string;
+    updateNewPost: (newPostText: string) => void;
     // arrayMessages: MessageType[];
     // arrayPosts: PostType[];
     // arrayDialogs: DialogType[];
@@ -25,7 +28,7 @@ export function App(props: AppPropsType) {
             <Footer/>
             <div className={'app-wrapper-content'}>
                 <Routes>
-                    <Route path="/profile" element={<Profile arrayPosts={props.state.arrayPosts} addPost={props.addPost}/>}/>
+                    <Route path="/profile" element={<Profile arrayPosts={props.state.arrayPosts} addPost={props.addPost} newPost={props.newPost} updateNewPost={props.updateNewPost}/>}/>
                     <Route path={'/messages'} element={<Messages arrayDialogs={props.state.arrayDialogs}
                                                                  arrayMessages={props.state.arrayMessages}
                     />}/>
