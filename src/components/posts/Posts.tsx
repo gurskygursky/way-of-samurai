@@ -7,9 +7,10 @@ type PostsPropsType = {
     // state: stateType;
     arrayPosts: PostType[];
     // addPost: (newPostText: string) => void;
-    addPost: () => void;
+    // addPost: () => void;
     newPost: string;
-    updateNewPost: (newPostText: string) => void;
+    dispatch: (action: any) => void;
+    // updateNewPost: (newPostText: string) => void;
 }
 export const Posts = (props: PostsPropsType) => {
 
@@ -18,7 +19,8 @@ export const Posts = (props: PostsPropsType) => {
     const [inputValue, setInputValue] = useState<string>('');
 
     const addPost = () => {
-        props.addPost();
+        // props.addPost();
+        props.dispatch({type: 'ADD_POST'});
         console.log(props.arrayPosts);
         // setInputValue('')
     }
@@ -30,7 +32,8 @@ export const Posts = (props: PostsPropsType) => {
     }
 
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement> ) => {
-        props.updateNewPost(event.currentTarget.value);
+        // props.updateNewPost(event.currentTarget.value);
+        props.dispatch({type: 'UPDATE_NEW_POST', newPostText: event.currentTarget.value});
         // setInputValue(event.currentTarget.value);
     }
 

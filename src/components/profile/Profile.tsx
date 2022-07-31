@@ -8,15 +8,17 @@ type ProfilePropsType = {
     // state: stateType;
     arrayPosts: PostType[];
     // addPost: (newPostText: string) => void;
-    addPost: () => void;
+    // addPost: () => void;
     newPost: string;
-    updateNewPost: (newPostText: string) => void;
+    // updateNewPost: (newPostText: string) => void;
+    dispatch: (action: any) => void;
 }
 export const Profile = (props: ProfilePropsType) => {
     return (
         <div>
             <ProfileDescription/>
-            <Posts arrayPosts={props.arrayPosts} addPost={props.addPost} newPost={props.newPost} updateNewPost={props.updateNewPost}/>
+            {/*<Posts arrayPosts={props.arrayPosts} addPost={props.addPost} newPost={props.newPost} updateNewPost={props.updateNewPost}/>*/}
+            <Posts arrayPosts={props.arrayPosts} newPost={props.newPost} dispatch={props.dispatch} />
         </div>
     );
 };

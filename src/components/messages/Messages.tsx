@@ -9,8 +9,9 @@ type MessagesPropsType = {
     arrayDialogs: DialogType[];
     arrayMessages: MessageType[];
     newMessageText: string;
-    sendMessage: () => void;
-    updateNewMessage: (newMessageText: string) => void;
+    dispatch: (action: any) => void;
+    // sendMessage: () => void;
+    // updateNewMessage: (newMessageText: string) => void;
 }
 
 export const Messages = (props: MessagesPropsType) => {
@@ -19,8 +20,9 @@ export const Messages = (props: MessagesPropsType) => {
             <Dialogs arrayDialogs={props.arrayDialogs}/>
             <Dialog arrayMessages={props.arrayMessages}
                     newMessageText={props.newMessageText}
-                    sendMessage={props.sendMessage}
-                    updateNewMessage={props.updateNewMessage}
+                    dispatch={props.dispatch}
+                    // sendMessage={props.sendMessage}
+                    // updateNewMessage={props.updateNewMessage}
             />
         </div>
 

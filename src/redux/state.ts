@@ -72,14 +72,16 @@ export type StateType = {
 
 export type StoreType = {
     _state: StateType;
-    addPost: () => void;
-    updateNewPost: (newPostText: string) => void;
+    // addPost: () => void;
+    // updateNewPost: (newPostText: string) => void;
     _onChange: () => void;
     subscribe: (callback: () => void) => void;
     getState: () => StateType;
-    sendMessage: () => void;
-    updateNewMessage: (newMessageText: string) => void;
+    // sendMessage: () => void;
+    // updateNewMessage: (newMessageText: string) => void;
+    dispatch: (action: ActionsTypes) => void;
 }
+type ActionsTypes = any;
 
 export const store: StoreType = {
     _state: {
@@ -106,26 +108,26 @@ export const store: StoreType = {
             newPost: 'newpost',
         },
     },
-        addPost () {
-            const newPostText = {id: 3, postText: this._state.profilePage.newPost, likesCount: 33};
-            this._state.profilePage.arrayPosts.push(newPostText);
-            this._state.profilePage.newPost = '';
-            this._onChange();
-        },
-    updateNewPost (newPostText: string) {
-        this._state.profilePage.newPost = newPostText;
-        this._onChange();
-    },
-    sendMessage () {
-        const newMessage = {id: 111, message: this._state.messagesPage.newMessageText};
-        this._state.messagesPage.arrayMessages.push(newMessage);
-        this._state.messagesPage.newMessageText = '';
-        this._onChange();
-    },
-    updateNewMessage (newMessageText: string) {
-        this._state.messagesPage.newMessageText = newMessageText;
-        this._onChange();
-    },
+        // addPost () {
+        //     const newPostText = {id: 3, postText: this._state.profilePage.newPost, likesCount: 33};
+        //     this._state.profilePage.arrayPosts.push(newPostText);
+        //     this._state.profilePage.newPost = '';
+        //     this._onChange();
+        // },
+    // updateNewPost (newPostText: string) {
+    //     this._state.profilePage.newPost = newPostText;
+    //     this._onChange();
+    // },
+    // sendMessage () {
+    //     const newMessage = {id: 111, message: this._state.messagesPage.newMessageText};
+    //     this._state.messagesPage.arrayMessages.push(newMessage);
+    //     this._state.messagesPage.newMessageText = '';
+    //     this._onChange();
+    // },
+    // updateNewMessage (newMessageText: string) {
+    //     this._state.messagesPage.newMessageText = newMessageText;
+    //     this._onChange();
+    // },
     _onChange () {
         console.log('state changed');
     },
@@ -135,4 +137,26 @@ export const store: StoreType = {
     getState() {
         return this._state;
     },
+    dispatch(action) {
+        if (action.type === 'ADD_POST') {
+            const newPostText = {id: 3, postText: this._state.profilePage.newPost, likesCount: 33};
+            this._state.profilePage.arrayPosts.push(newPostText);
+            this._state.profilePage.newPost = '';
+            this._onChange();
+        }
+        if (action.type === 'UPDATE_NEW_POST') {
+            this._state.profilePage.newPost = action.newPostText;
+            this._onChange();
+        }
+        if (action.type === 'SEND_MESSAGE') {
+            const newMessage = {id: 111, message: this._state.messagesPage.newMessageText};
+            this._state.messagesPage.arrayMessages.push(newMessage);
+            this._state.messagesPage.newMessageText = '';
+            this._onChange();
+        }
+        if (action.type === 'UPDATE_NEW_MESSAGE') {
+            this._state.messagesPage.newMessageText = action.newMessageText;
+            this._onChange();
+        }
+    }
 }

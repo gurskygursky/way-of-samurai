@@ -54,6 +54,7 @@ export let rerenderEntireTree = () => {
         // <React.StrictMode>
             <BrowserRouter>
             <App store={store}
+                 dispatch={store.dispatch.bind(store)}
                  // addPost={store.addPost}
                  // newPost={store._state.profilePage.newPost}
                 // updateNewPost={store.updateNewPost}

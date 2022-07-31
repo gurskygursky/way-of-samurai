@@ -12,6 +12,7 @@ import {StoreType} from './redux/state';
 type AppPropsType = {
     // state: stateType;
     store: StoreType;
+    dispatch: (action: any) => void;
     // addPost: (newPostText: string) => void;
     // addPost: () => void;
     // newPost: string;
@@ -32,14 +33,18 @@ export function App(props: AppPropsType) {
             <div className={'app-wrapper-content'}>
                 <Routes>
                     <Route path="/profile" element={<Profile arrayPosts={state.profilePage.arrayPosts}
-                                                             addPost={props.store.addPost.bind(props.store)}
+                                                             dispatch={props.dispatch.bind(props.store)}
+                                                             // addPost={props.store.addPost.bind(props.store)}
                                                              newPost={state.profilePage.newPost}
-                                                             updateNewPost={props.store.updateNewPost.bind(props.store)}/>}/>
+                                                             // updateNewPost={props.store.updateNewPost.bind(props.store)}
+                    />
+                    }/>
                     <Route path={'/messages'} element={<Messages arrayDialogs={state.messagesPage.arrayDialogs}
                                                                  arrayMessages={state.messagesPage.arrayMessages}
                                                                  newMessageText={state.messagesPage.newMessageText}
-                                                                 sendMessage={props.store.sendMessage.bind(props.store)}
-                                                                 updateNewMessage={props.store.updateNewMessage.bind(props.store)}
+                                                                 dispatch={props.dispatch.bind(props.store)}
+                                                                 // sendMessage={props.store.sendMessage.bind(props.store)}
+                                                                 // updateNewMessage={props.store.updateNewMessage.bind(props.store)}
 
                     />}/>
                 </Routes>

@@ -6,8 +6,9 @@ import { MessageType } from '../../../redux/state';
 type DialogPropsType = {
     arrayMessages: MessageType[];
     newMessageText: string;
-    sendMessage: () => void;
-    updateNewMessage: (newMessageText: string) => void;
+    dispatch: (action: any) => void;
+    // sendMessage: () => void;
+    // updateNewMessage: (newMessageText: string) => void;
 }
 
 export const Dialog = (props: DialogPropsType) => {
@@ -15,7 +16,8 @@ export const Dialog = (props: DialogPropsType) => {
     const messageItems = props.arrayMessages.map(item => <Message message={item.message}/>);
 
     const sendMessage = () => {
-        props.sendMessage();
+        // props.sendMessage();
+        props.dispatch({type: 'SEND_MESSAGE'});
         console.log(props.arrayMessages);
     }
     const onKeyPressHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -25,7 +27,8 @@ export const Dialog = (props: DialogPropsType) => {
     }
 
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.updateNewMessage(event.currentTarget.value);
+        // props.updateNewMessage(event.currentTarget.value);
+        props.dispatch({type: 'UPDATE_NEW_MESSAGE', newMessageText: event.currentTarget.value});
     }
 
     return (
