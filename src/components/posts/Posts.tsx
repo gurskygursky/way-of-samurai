@@ -22,14 +22,14 @@ export const Posts = (props: PostsPropsType) => {
         console.log(props.arrayPosts);
         // setInputValue('')
     }
-    const onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    const onKeyPressHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === 'Enter') {
             addPost();
             // setInputValue('');
         }
     }
 
-    const onChangeHandler = (event: ChangeEvent<HTMLInputElement> ) => {
+    const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement> ) => {
         props.updateNewPost(event.currentTarget.value);
         // setInputValue(event.currentTarget.value);
     }
@@ -39,8 +39,13 @@ export const Posts = (props: PostsPropsType) => {
         <div>
             MY POST
             <div>
+                <textarea value={props.newPost}
+                          onChange={onChangeHandler}
+                          onKeyDown={onKeyPressHandler}
+                          maxLength={300}
+                />
                 {/*<input value={inputValue} onChange={onChangeHandler} onKeyDown={onKeyPressHandler}/>*/}
-                <input value={props.newPost} onChange={onChangeHandler} onKeyDown={onKeyPressHandler}/>
+                {/*<input value={props.newPost} onChange={onChangeHandler} onKeyDown={onKeyPressHandler}/>*/}
                 <button onClick={addPost}>Add post</button>
             </div>
             {postItems}
