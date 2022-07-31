@@ -7,12 +7,12 @@ import {Profile} from './components/profile/Profile';
 import {Messages} from './components/messages/Messages';
 import {Route, Routes} from 'react-router-dom';
 // import {DialogType, MessageType, PostType} from './index';
-import {StoreType} from './redux/state';
+import {ActionsTypes, StoreType} from './redux/state';
 
 type AppPropsType = {
     // state: stateType;
     store: StoreType;
-    dispatch: (action: any) => void;
+    dispatch: (action: ActionsTypes) => void;
     // addPost: (newPostText: string) => void;
     // addPost: () => void;
     // newPost: string;

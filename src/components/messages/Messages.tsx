@@ -3,13 +3,13 @@ import {Dialogs} from '../../components/dialogs/Dialogs';
 import {Dialog} from '../../components/dialogs/Dialog/Dialog';
 import style from './Messages.module.css';
 // import {DialogType, MessageType} from '../../index';
-import {DialogType, MessageType} from '../../redux/state';
+import {ActionsTypes, DialogType, MessageType} from '../../redux/state';
 
 type MessagesPropsType = {
     arrayDialogs: DialogType[];
     arrayMessages: MessageType[];
     newMessageText: string;
-    dispatch: (action: any) => void;
+    dispatch: (action: ActionsTypes) => void;
     // sendMessage: () => void;
     // updateNewMessage: (newMessageText: string) => void;
 }

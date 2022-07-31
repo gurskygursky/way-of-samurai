@@ -2,7 +2,7 @@ import React from 'react';
 import {Posts} from '../../components/posts/Posts';
 import {ProfileDescription} from '../../components/profile/ProfileDescription';
 // import {PostType} from '../../index';
-import {PostType} from './../../redux/state';
+import {ActionsTypes, PostType} from './../../redux/state';
 
 type ProfilePropsType = {
     // state: stateType;
@@ -11,7 +11,7 @@ type ProfilePropsType = {
     // addPost: () => void;
     newPost: string;
     // updateNewPost: (newPostText: string) => void;
-    dispatch: (action: any) => void;
+    dispatch: (action: ActionsTypes) => void;
 }
 export const Profile = (props: ProfilePropsType) => {
     return (

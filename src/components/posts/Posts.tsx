@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {Post} from '../../components/posts/Post/Post';
 // import {PostType} from '../../index';
-import {PostType} from '../../redux/state';
+import {ActionsTypes, addPostAC, PostType, updateNewPostAC} from '../../redux/state';
 
 type PostsPropsType = {
     // state: stateType;
@@ -9,7 +9,7 @@ type PostsPropsType = {
     // addPost: (newPostText: string) => void;
     // addPost: () => void;
     newPost: string;
-    dispatch: (action: any) => void;
+    dispatch: (action: ActionsTypes) => void;
     // updateNewPost: (newPostText: string) => void;
 }
 export const Posts = (props: PostsPropsType) => {
@@ -20,7 +20,8 @@ export const Posts = (props: PostsPropsType) => {
 
     const addPost = () => {
         // props.addPost();
-        props.dispatch({type: 'ADD_POST'});
+        // props.dispatch({type: 'ADD_POST'});
+        props.dispatch(addPostAC());
         console.log(props.arrayPosts);
         // setInputValue('')
     }
@@ -33,7 +34,8 @@ export const Posts = (props: PostsPropsType) => {
 
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement> ) => {
         // props.updateNewPost(event.currentTarget.value);
-        props.dispatch({type: 'UPDATE_NEW_POST', newPostText: event.currentTarget.value});
+        // props.dispatch({type: 'UPDATE_NEW_POST', newPostText: event.currentTarget.value});
+        props.dispatch(updateNewPostAC(event.currentTarget.value));
         // setInputValue(event.currentTarget.value);
     }
 

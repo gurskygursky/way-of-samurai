@@ -81,7 +81,6 @@ export type StoreType = {
     // updateNewMessage: (newMessageText: string) => void;
     dispatch: (action: ActionsTypes) => void;
 }
-type ActionsTypes = any;
 
 export const store: StoreType = {
     _state: {
@@ -159,4 +158,33 @@ export const store: StoreType = {
             this._onChange();
         }
     }
+}
+// actions creator types
+export type ActionsTypes = ReturnType<typeof addPostAC> |
+    ReturnType<typeof updateNewPostAC> |
+    ReturnType<typeof sendMessageAC> |
+    ReturnType<typeof updateNewMessageAC>;
+
+//action creator
+export const addPostAC = () => {
+    return {
+        type: 'ADD_POST'
+    } as const
+}
+export const updateNewPostAC = (newPostText: string) => {
+    return {
+        type: 'UPDATE_NEW_POST',
+        newPostText,
+    } as const
+}
+export const sendMessageAC = () => {
+    return {
+        type: 'SEND_MESSAGE',
+    } as const
+}
+export const updateNewMessageAC = (newMessageText: string) => {
+    return {
+        type: 'UPDATE_NEW_MESSAGE',
+        newMessageText,
+    } as const
 }
