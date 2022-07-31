@@ -19,6 +19,7 @@ export type profilePageType = {
 export type messagesPageType = {
     arrayMessages: MessageType[],
     arrayDialogs: DialogType[],
+    newMessageText: string;
 }
 export type StateType = {
     profilePage: profilePageType,
@@ -76,6 +77,8 @@ export type StoreType = {
     _onChange: () => void;
     subscribe: (callback: () => void) => void;
     getState: () => StateType;
+    sendMessage: () => void;
+    updateNewMessage: (newMessageText: string) => void;
 }
 
 export const store: StoreType = {
@@ -93,6 +96,7 @@ export const store: StoreType = {
                 {id: 4, userName: 'Viktor'},
                 {id: 5, userName: 'Sveta'},
             ],
+            newMessageText: 'aksda;sf'
         },
         profilePage: {
             arrayPosts: [
@@ -110,6 +114,16 @@ export const store: StoreType = {
         },
     updateNewPost (newPostText: string) {
         this._state.profilePage.newPost = newPostText;
+        this._onChange();
+    },
+    sendMessage () {
+        const newMessage = {id: 111, message: this._state.messagesPage.newMessageText};
+        this._state.messagesPage.arrayMessages.push(newMessage);
+        this._state.messagesPage.newMessageText = '';
+        this._onChange();
+    },
+    updateNewMessage (newMessageText: string) {
+        this._state.messagesPage.newMessageText = newMessageText;
         this._onChange();
     },
     _onChange () {

@@ -8,13 +8,20 @@ import {DialogType, MessageType} from '../../redux/state';
 type MessagesPropsType = {
     arrayDialogs: DialogType[];
     arrayMessages: MessageType[];
+    newMessageText: string;
+    sendMessage: () => void;
+    updateNewMessage: (newMessageText: string) => void;
 }
 
 export const Messages = (props: MessagesPropsType) => {
     return (
         <div className={style.messagesWrapper}>
             <Dialogs arrayDialogs={props.arrayDialogs}/>
-            <Dialog arrayMessages={props.arrayMessages}/>
+            <Dialog arrayMessages={props.arrayMessages}
+                    newMessageText={props.newMessageText}
+                    sendMessage={props.sendMessage}
+                    updateNewMessage={props.updateNewMessage}
+            />
         </div>
 
     );

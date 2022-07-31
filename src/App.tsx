@@ -37,6 +37,10 @@ export function App(props: AppPropsType) {
                                                              updateNewPost={props.store.updateNewPost.bind(props.store)}/>}/>
                     <Route path={'/messages'} element={<Messages arrayDialogs={state.messagesPage.arrayDialogs}
                                                                  arrayMessages={state.messagesPage.arrayMessages}
+                                                                 newMessageText={state.messagesPage.newMessageText}
+                                                                 sendMessage={props.store.sendMessage.bind(props.store)}
+                                                                 updateNewMessage={props.store.updateNewMessage.bind(props.store)}
+
                     />}/>
                 </Routes>
             </div>
