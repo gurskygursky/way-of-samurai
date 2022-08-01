@@ -2,13 +2,14 @@ import React from 'react';
 import {Dialogs} from '../../components/dialogs/Dialogs';
 import {Dialog} from '../../components/dialogs/Dialog/Dialog';
 import style from './Messages.module.css';
-import {ActionsTypes, DialogType, MessageType} from '../../redux/state';
+import {DialogType, MessageType} from '../../redux/reducers/dialogsReducer';
+import {ActionsType} from '../../redux/redux-store';
 
 type MessagesPropsType = {
     arrayDialogs: DialogType[];
     arrayMessages: MessageType[];
     newMessageText: string;
-    dispatch: (action: ActionsTypes) => void;
+    dispatch: (action: ActionsType) => void;
 }
 
 export const Messages = (props: MessagesPropsType) => {
@@ -20,6 +21,5 @@ export const Messages = (props: MessagesPropsType) => {
                     dispatch={props.dispatch}
             />
         </div>
-
     );
 };

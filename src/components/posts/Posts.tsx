@@ -1,11 +1,12 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import {Post} from '../../components/posts/Post/Post';
-import {ActionsTypes, addPostAC, PostType, updateNewPostAC} from '../../redux/state';
+import {addPostAC, PostType, updateNewPostAC} from '../../redux/reducers/profileReducer';
+import {ActionsType} from '../../redux/redux-store';
 
 type PostsPropsType = {
     arrayPosts: PostType[];
     newPost: string;
-    dispatch: (action: ActionsTypes) => void;
+    dispatch: (action: ActionsType) => void;
 }
 
 export const Posts = (props: PostsPropsType) => {

@@ -1,12 +1,13 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './Dialog.module.css';
 import {Message} from '../../messages/message/Message';
-import {ActionsTypes, MessageType, sendMessageAC, updateNewMessageAC} from '../../../redux/state';
+import {MessageType, sendMessageAC, updateNewMessageAC} from '../../../redux/reducers/dialogsReducer';
+import {ActionsType} from '../../../redux/redux-store';
 
 type DialogPropsType = {
     arrayMessages: MessageType[];
     newMessageText: string;
-    dispatch: (action: ActionsTypes) => void;
+    dispatch: (action: ActionsType) => void;
 }
 
 export const Dialog = (props: DialogPropsType) => {

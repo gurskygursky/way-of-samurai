@@ -1,15 +1,29 @@
-import {StateType, ActionsTypes} from './../../redux/store';
-
-export const profileReducer = (state: StateType, action: ActionsTypes) => {
+export type PostType = {
+    id: number;
+    postText: string;
+    likesCount: number;
+}
+export type ProfilePageType = {
+    arrayPosts: PostType[],
+    newPost: string,
+}
+const initialState: ProfilePageType = {
+            arrayPosts: [
+                {id: 1, postText: 'My first post!', likesCount: 10},
+                {id: 2, postText: 'My second post!', likesCount: 10},
+            ],
+            newPost: 'newpost',
+        }
+export const profileReducer = (state = initialState, action: ProfileActionsType) => {
     switch (action.type) {
         case 'ADD_POST': {
-            const newPostText = {id: 3, postText: state.profilePage.newPost, likesCount: 33};
-            state.profilePage.arrayPosts.push(newPostText);
-            state.profilePage.newPost = '';
+            const newPostText = {id: 3, postText: state.newPost, likesCount: 33};
+            state.arrayPosts.push(newPostText);
+            state.newPost = '';
             return state;
         }
         case 'UPDATE_NEW_POST': {
-            state.profilePage.newPost = action.newPostText;
+            state.newPost = action.newPostText;
             return state;
         }
         default:

@@ -1,12 +1,13 @@
 import React from 'react';
 import {Posts} from '../../components/posts/Posts';
 import {ProfileDescription} from '../../components/profile/ProfileDescription';
-import {ActionsTypes, PostType} from './../../redux/state';
+import {PostType} from '../../redux/reducers/profileReducer';
+import {ActionsType} from '../../redux/redux-store';
 
 type ProfilePropsType = {
     arrayPosts: PostType[];
     newPost: string;
-    dispatch: (action: ActionsTypes) => void;
+    dispatch: (action: ActionsType) => void;
 }
 export const Profile = (props: ProfilePropsType) => {
     return (

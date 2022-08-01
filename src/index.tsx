@@ -4,17 +4,18 @@ import './index.css';
 import {App} from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
-import { store } from './redux/store';
+import {store} from './redux/redux-store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 export let rerenderEntireTree = () => {
     root.render(
-            <BrowserRouter>
-            <App store={store}
+        <BrowserRouter>
+            <App store={store.getState()}
                  dispatch={store.dispatch.bind(store)}
             />
-                </BrowserRouter>
-    );}
+        </BrowserRouter>
+    );
+}
 
 rerenderEntireTree();
 store.subscribe(rerenderEntireTree);
