@@ -1,44 +1,30 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import {Post} from '../../components/posts/Post/Post';
-// import {PostType} from '../../index';
 import {ActionsTypes, addPostAC, PostType, updateNewPostAC} from '../../redux/state';
 
 type PostsPropsType = {
-    // state: stateType;
     arrayPosts: PostType[];
-    // addPost: (newPostText: string) => void;
-    // addPost: () => void;
     newPost: string;
     dispatch: (action: ActionsTypes) => void;
-    // updateNewPost: (newPostText: string) => void;
 }
+
 export const Posts = (props: PostsPropsType) => {
 
-    const postItems = props.arrayPosts.map((item: PostType) => <Post postText={item.postText} likesCount={item.likesCount}/>);
-
-    const [inputValue, setInputValue] = useState<string>('');
+    const postItems = props.arrayPosts.map((item: PostType) => <Post postText={item.postText}
+                                                                     likesCount={item.likesCount}/>);
 
     const addPost = () => {
-        // props.addPost();
-        // props.dispatch({type: 'ADD_POST'});
         props.dispatch(addPostAC());
-        console.log(props.arrayPosts);
-        // setInputValue('')
     }
     const onKeyPressHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === 'Enter') {
             addPost();
-            // setInputValue('');
         }
     }
 
-    const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement> ) => {
-        // props.updateNewPost(event.currentTarget.value);
-        // props.dispatch({type: 'UPDATE_NEW_POST', newPostText: event.currentTarget.value});
+    const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
         props.dispatch(updateNewPostAC(event.currentTarget.value));
-        // setInputValue(event.currentTarget.value);
     }
-
 
     return (
         <div>
@@ -49,8 +35,6 @@ export const Posts = (props: PostsPropsType) => {
                           onKeyDown={onKeyPressHandler}
                           maxLength={300}
                 />
-                {/*<input value={inputValue} onChange={onChangeHandler} onKeyDown={onKeyPressHandler}/>*/}
-                {/*<input value={props.newPost} onChange={onChangeHandler} onKeyDown={onKeyPressHandler}/>*/}
                 <button onClick={addPost}>Add post</button>
             </div>
             {postItems}

@@ -17,6 +17,7 @@ export const profileReducer = (state: StateType, action: ActionsTypes) => {
     }
 };
 
+//action types
 export type ProfileActionsType =
     ReturnType<typeof addPostAC> |
     ReturnType<typeof updateNewPostAC>;

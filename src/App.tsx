@@ -6,23 +6,15 @@ import {Footer} from './components/footer/Footer';
 import {Profile} from './components/profile/Profile';
 import {Messages} from './components/messages/Messages';
 import {Route, Routes} from 'react-router-dom';
-// import {DialogType, MessageType, PostType} from './index';
 import {ActionsTypes, StoreType} from './redux/state';
 
 type AppPropsType = {
-    // state: stateType;
     store: StoreType;
     dispatch: (action: ActionsTypes) => void;
-    // addPost: (newPostText: string) => void;
-    // addPost: () => void;
-    // newPost: string;
-    // updateNewPost: (newPostText: string) => void;
-    // arrayMessages: MessageType[];
-    // arrayPosts: PostType[];
-    // arrayDialogs: DialogType[];
 }
 
-export function App(props: AppPropsType) {
+export const App = (props: AppPropsType) => {
+
     const state = props.store.getState();
 
     return (
@@ -34,19 +26,13 @@ export function App(props: AppPropsType) {
                 <Routes>
                     <Route path="/profile" element={<Profile arrayPosts={state.profilePage.arrayPosts}
                                                              dispatch={props.dispatch.bind(props.store)}
-                                                             // addPost={props.store.addPost.bind(props.store)}
-                                                             newPost={state.profilePage.newPost}
-                                                             // updateNewPost={props.store.updateNewPost.bind(props.store)}
-                    />
+                                                             newPost={state.profilePage.newPost}/>
                     }/>
                     <Route path={'/messages'} element={<Messages arrayDialogs={state.messagesPage.arrayDialogs}
                                                                  arrayMessages={state.messagesPage.arrayMessages}
                                                                  newMessageText={state.messagesPage.newMessageText}
-                                                                 dispatch={props.dispatch.bind(props.store)}
-                                                                 // sendMessage={props.store.sendMessage.bind(props.store)}
-                                                                 // updateNewMessage={props.store.updateNewMessage.bind(props.store)}
-
-                    />}/>
+                                                                 dispatch={props.dispatch.bind(props.store)}/>
+                    }/>
                 </Routes>
             </div>
         </div>

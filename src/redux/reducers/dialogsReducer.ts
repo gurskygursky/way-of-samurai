@@ -17,10 +17,12 @@ export const dialogsReducer = (state: StateType, action: ActionsTypes) => {
     }
 };
 
+//action types
 export type DialogsActionsType =
     ReturnType<typeof sendMessageAC> |
     ReturnType<typeof updateNewMessageAC>;
 
+//action creator
 export const sendMessageAC = () => {
     return {
         type: 'SEND_MESSAGE',
