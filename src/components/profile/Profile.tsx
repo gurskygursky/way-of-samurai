@@ -7,14 +7,14 @@ import {PostsContainer} from './../../components/posts/PostsContainer';
 
 type ProfilePropsType = {
     // arrayPosts: PostType[];
-    newPost: string;
+    // newPost: string;
     // dispatch: (action: ActionsType) => void;
 }
 export const Profile = (props: ProfilePropsType) => {
     return (
         <div>
             <ProfileDescription/>
-            <PostsContainer newPost={props.newPost}/>
+            <PostsContainer />
             {/*<Posts arrayPosts={props.arrayPosts}*/}
             {/*       newPost={props.newPost}*/}
             {/*       dispatch={props.dispatch}*/}

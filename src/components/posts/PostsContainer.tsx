@@ -7,17 +7,21 @@ import { Posts } from "./Posts";
 
 type mapStateToPropsType = {
     arrayPosts: PostType[];
-    newPosts: string;
+    newPost: string;
+}
+type mapDispatchToProps = {
+    addPost: () => void;
+    onChangeHandler: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const mapStateToProps = (state: StoreType): mapStateToPropsType => {
     return {
         arrayPosts: state.profileReducer.arrayPosts,
-        newPosts: state.profileReducer.newPost
+        newPost: state.profileReducer.newPost
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToProps => {
     return {
         addPost: () => {
             dispatch(addPostAC());
@@ -27,5 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         }
     }
 }
+
+export type PostsContainerPropsType = mapStateToPropsType & mapDispatchToProps;
 
 export const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);

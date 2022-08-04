@@ -28,7 +28,7 @@ export const App = (props: AppPropsType) => {
                     <Route path="/profile" element={<Profile
                         // arrayPosts={profilePage.arrayPosts}
                         //                                      dispatch={props.dispatch.bind(props.store)}
-                                                             newPost={props.store.profileReducer.newPost}
+                        //                                      newPost={props.store.profileReducer.newPost}
                     />
                     }/>
                     <Route path={'/messages'} element={<Messages arrayDialogs={messagesPage.arrayDialogs}
