@@ -8,6 +8,8 @@ type DialogPropsType = {
     arrayMessages: MessageType[];
     newMessageText: string;
     dispatch: (action: ActionsType) => void;
+    sendMessage: () => void;
+    onChangeHandler: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export const Dialog = (props: DialogPropsType) => {
@@ -15,7 +17,8 @@ export const Dialog = (props: DialogPropsType) => {
     const messageItems = props.arrayMessages.map(item => <Message message={item.message}/>);
 
     const sendMessage = () => {
-        props.dispatch(sendMessageAC());
+        props.sendMessage();
+        // props.dispatch(sendMessageAC());
     }
     const onKeyPressHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === 'Enter') {
@@ -24,7 +27,8 @@ export const Dialog = (props: DialogPropsType) => {
     }
 
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(updateNewMessageAC(event.currentTarget.value));
+        props.onChangeHandler(event);
+        // props.dispatch(updateNewMessageAC(event.currentTarget.value));
     }
 
     return (
