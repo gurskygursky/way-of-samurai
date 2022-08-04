@@ -1,12 +1,14 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import {Post} from '../../components/posts/Post/Post';
 import {addPostAC, PostType, updateNewPostAC} from '../../redux/reducers/profileReducer';
-import {ActionsType} from '../../redux/redux-store';
+import {ActionsType, store} from '../../redux/redux-store';
 
 type PostsPropsType = {
     arrayPosts: PostType[];
     newPost: string;
-    dispatch: (action: ActionsType) => void;
+    // dispatch: (action: ActionsType) => void;
+    addPost: () => void;
+    onChangeHandler: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export const Posts = (props: PostsPropsType) => {
@@ -15,7 +17,8 @@ export const Posts = (props: PostsPropsType) => {
                                                                      likesCount={item.likesCount}/>);
 
     const addPost = () => {
-        props.dispatch(addPostAC());
+        props.addPost();
+        // props.dispatch(addPostAC());
     }
     const onKeyPressHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === 'Enter') {
@@ -24,7 +27,8 @@ export const Posts = (props: PostsPropsType) => {
     }
 
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(updateNewPostAC(event.currentTarget.value));
+        props.onChangeHandler(event);
+        // props.dispatch(updateNewPostAC(event.currentTarget.value));
     }
 
     return (
