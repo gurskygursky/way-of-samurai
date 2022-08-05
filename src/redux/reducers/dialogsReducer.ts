@@ -6,28 +6,30 @@ export type DialogType = {
     id: number;
     userName: string;
 }
-export type MessagesPageType = {
-    arrayMessages: MessageType[],
-    arrayDialogs: DialogType[],
-    newMessageText: string;
-}
+// export type MessagesPageType = {
+//     arrayMessages: MessageType[],
+//     arrayDialogs: DialogType[],
+//     newMessageText: string;
+// }
+export type InitialStateType = typeof initialState;
 
-const initialState: MessagesPageType = {
+const initialState = {
     arrayMessages: [
         {id: 1, message: 'Yo!'},
         {id: 2, message: 'Hello!'},
         {id: 3, message: 'Hello World!'},
-    ],
+    ] as MessageType[],
     arrayDialogs: [
         {id: 1, userName: 'Dimych'},
         {id: 2, userName: 'Igor'},
         {id: 3, userName: 'Valera'},
         {id: 4, userName: 'Viktor'},
         {id: 5, userName: 'Sveta'},
-    ],
+    ] as DialogType[],
     newMessageText: 'aksda;sf'
 }
-export const dialogsReducer = (state = initialState, action: DialogsActionsType) => {
+
+export const dialogsReducer = (state: InitialStateType = initialState, action: DialogsActionsType): InitialStateType => {
     switch (action.type) {
         case 'SEND_MESSAGE': {
             // const newMessage = {id: 111, message: state.newMessageText};
