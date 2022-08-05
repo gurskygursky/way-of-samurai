@@ -9,14 +9,14 @@ import {Route, Routes} from 'react-router-dom';
 import {ActionsType, StoreType} from './redux/redux-store';
 
 type AppPropsType = {
-    store: StoreType;
-    dispatch: (action: ActionsType) => void;
+    // store: StoreType;
+    // dispatch: (action: ActionsType) => void;
 }
 
 export const App = (props: AppPropsType) => {
 
     // const profilePage = props.store.profileReducer;
-    const messagesPage = props.store.dialogsReducer;
+    // const messagesPage = props.store.dialogsReducer;
 
     return (
         <div className={'app-wrapper'}>
@@ -31,10 +31,12 @@ export const App = (props: AppPropsType) => {
                         //                                      newPost={props.store.profileReducer.newPost}
                     />
                     }/>
-                    <Route path={'/messages'} element={<Messages arrayDialogs={messagesPage.arrayDialogs}
-                                                                 arrayMessages={messagesPage.arrayMessages}
-                                                                 newMessageText={messagesPage.newMessageText}
-                                                                 dispatch={props.dispatch.bind(props.store)}/>
+                    <Route path={'/messages'} element={<Messages
+                        // arrayDialogs={messagesPage.arrayDialogs}
+                        //                                          arrayMessages={messagesPage.arrayMessages}
+                        //                                          newMessageText={messagesPage.newMessageText}
+                        //                                          dispatch={props.dispatch.bind(props.store)}
+                    />
                     }/>
                 </Routes>
             </div>

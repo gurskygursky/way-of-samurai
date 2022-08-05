@@ -3,16 +3,17 @@ import style from './Dialog.module.css';
 import {Message} from '../../messages/message/Message';
 import {MessageType, sendMessageAC, updateNewMessageAC} from '../../../redux/reducers/dialogsReducer';
 import {ActionsType} from '../../../redux/redux-store';
+import {DialogContainerType} from './../../../components/dialogs/Dialog/DialogContainer';
 
-type DialogPropsType = {
-    arrayMessages: MessageType[];
-    newMessageText: string;
-    dispatch: (action: ActionsType) => void;
-    sendMessage: () => void;
-    onChangeHandler: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-}
+// type DialogPropsType = {
+//     arrayMessages: MessageType[];
+//     newMessageText: string;
+//     dispatch: (action: ActionsType) => void;
+//     sendMessage: () => void;
+//     onChangeHandler: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+// }
 
-export const Dialog = (props: DialogPropsType) => {
+export const Dialog = (props: DialogContainerType) => {
 
     const messageItems = props.arrayMessages.map(item => <Message message={item.message}/>);
 
