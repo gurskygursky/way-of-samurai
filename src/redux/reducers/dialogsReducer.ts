@@ -30,14 +30,22 @@ const initialState: MessagesPageType = {
 export const dialogsReducer = (state = initialState, action: DialogsActionsType) => {
     switch (action.type) {
         case 'SEND_MESSAGE': {
+            // const newMessage = {id: 111, message: state.newMessageText};
+            // state.arrayMessages.push(newMessage);
+            // state.newMessageText = '';
+            // return state;
             const newMessage = {id: 111, message: state.newMessageText};
-            state.arrayMessages.push(newMessage);
-            state.newMessageText = '';
-            return state;
+            const copyState = {...state};
+            copyState.arrayMessages.push(newMessage);
+            copyState.newMessageText = '';
+            return copyState;
         }
         case 'UPDATE_NEW_MESSAGE': {
-            state.newMessageText = action.newMessageText;
-            return state;
+            const copyState = {...state};
+            copyState.newMessageText = action.newMessageText;
+            return copyState;
+            // state.newMessageText = action.newMessageText;
+            // return state;
         }
         default:
             return state;
