@@ -1,4 +1,4 @@
-export type UserType = {
+export  type UserType = {
     id: number;
     firstName: string;
     secondName: string;
@@ -12,30 +12,30 @@ export type UserType = {
 
 const initialState = {
     arrayUsers: [
-        {
-            id: 1,
-            firstName: 'My first post!',
-            secondName: '',
-            status: '',
-            isFollow: true,
-            location: {country: 'Belarus', city: 'Minsk'}
-        },
-        {
-            id: 2,
-            firstName: 'My first post!',
-            secondName: '',
-            status: '',
-            isFollow: false,
-            location: {country: 'Belarus', city: 'Minsk'}
-        },
-        {
-            id: 3,
-            firstName: 'My first post!',
-            secondName: '',
-            status: '',
-            isFollow: true,
-            location: {country: 'Belarus', city: 'Minsk'}
-        },
+        // {
+        //     id: 1,
+        //     firstName: 'My first post!',
+        //     secondName: '',
+        //     status: '',
+        //     isFollow: true,
+        //     location: {country: 'Belarus', city: 'Minsk'}
+        // },
+        // {
+        //     id: 2,
+        //     firstName: 'My first post!',
+        //     secondName: '',
+        //     status: '',
+        //     isFollow: false,
+        //     location: {country: 'Belarus', city: 'Minsk'}
+        // },
+        // {
+        //     id: 3,
+        //     firstName: 'My first post!',
+        //     secondName: '',
+        //     status: '',
+        //     isFollow: true,
+        //     location: {country: 'Belarus', city: 'Minsk'}
+        // },
     ] as UserType[],
 };
 

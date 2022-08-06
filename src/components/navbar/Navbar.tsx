@@ -26,6 +26,9 @@ export const Navbar = () => {
                     <Link to={'/settings'}>Settings</Link>
                     {/*<a href={'/settings'}>Settings</a>*/}
                 </div>
+                <div>
+                    <Link to={'/users'}>Users</Link>
+                </div>
             </div>
         </div>
     );
