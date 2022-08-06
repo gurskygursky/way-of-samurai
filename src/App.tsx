@@ -7,6 +7,7 @@ import {Profile} from './components/profile/Profile';
 import {Messages} from './components/messages/Messages';
 import {Route, Routes} from 'react-router-dom';
 import {ActionsType, StoreType} from './redux/redux-store';
+import {UsersContainer} from './components/users/UsersContainer';
 
 type AppPropsType = {
     // store: StoreType;
@@ -38,6 +39,7 @@ export const App = (props: AppPropsType) => {
                         //                                          dispatch={props.dispatch.bind(props.store)}
                     />
                     }/>
+                    <Route path={'/users'} element={<UsersContainer />}/>
                 </Routes>
             </div>
         </div>
