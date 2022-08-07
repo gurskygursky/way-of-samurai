@@ -1,3 +1,5 @@
+import {UsersResponseType} from './../../components/users/Users';
+
 export  type UserType = {
     id: number;
     firstName: string;
@@ -36,7 +38,8 @@ const initialState = {
         //     isFollow: true,
         //     location: {country: 'Belarus', city: 'Minsk'}
         // },
-    ] as UserType[],
+    // ] as UserType[],
+    ] as UsersResponseType[],
 };
 
 export type InitialStateType = typeof initialState;
@@ -46,7 +49,8 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
         case 'SET_USERS':
             return {
                 ...state,
-                arrayUsers: [...state.arrayUsers, ...action.users]
+                // arrayUsers: [...state.arrayUsers, ...action.users]
+                arrayUsers: [...state.arrayUsers]
             };
         case 'FOLLOW':
             return {
@@ -62,7 +66,8 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
             return state;
     }
 }
-export const setUsersAC = (users: UserType[]) => {
+// export const setUsersAC = (users: UserType[]) => {
+export const setUsersAC = (users: UsersResponseType[]) => {
     return {
         type: 'SET_USERS',
         users
