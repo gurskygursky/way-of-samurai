@@ -40,6 +40,9 @@ const initialState = {
         // },
     // ] as UserType[],
     ] as UsersResponseType[],
+    pageSize: 5,
+    totalCount: 30,
+    currentPage: 1,
 };
 
 export type InitialStateType = typeof initialState;
@@ -62,6 +65,10 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
                 ...state,
                 arrayUsers: state.arrayUsers.map(user => user.id === action.userID ? {...user, isFollow: false} : user)
             };
+            case 'SELECT_PAGE':
+                return {
+                    ...state, currentPage: action.selectedPage
+                }
         default:
             return state;
     }
@@ -85,12 +92,20 @@ export const unfollowUserAC = (userID: number) => {
         userID,
     } as const
 }
+export const selectPageAC = (selectedPage: number) => {
+    return {
+        type: 'SELECT_PAGE',
+        selectedPage,
+    } as const
+}
 
 type SetUsersActionType = ReturnType<typeof setUsersAC>;
 type FollowUserActionType = ReturnType<typeof followUserAC>;
 type UnfollowUserActionType = ReturnType<typeof unfollowUserAC>;
+type SelectPageActionType = ReturnType<typeof selectPageAC>;
 
 export type UsersActionsType =
     FollowUserActionType |
     UnfollowUserActionType |
-    SetUsersActionType;
+    SetUsersActionType |
+    SelectPageActionType;

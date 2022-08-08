@@ -20,8 +20,8 @@ export type UsersResponseType = {
 export const Users = (props: UserContainerPropsType) => {
 
     if (props.arrayUsers.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
-                .then(response => props.setUsers(response.data.items));
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPage}&count=${props.pageSize}`)
+            .then(response => props.setUsers(response.data.items));
         // props.setUsers([
         //     {
         //         id: 1,
@@ -56,10 +56,22 @@ export const Users = (props: UserContainerPropsType) => {
     const onClickUnfollow = (userID: number) => {
         props.unfollow(userID);
     }
+    const onClickSelected = (selectedPage: number) => {
+        props.selectPage(selectedPage);
+    }
+
+    const buttonsPageCount = Math.ceil(props.totalCount / props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= buttonsPageCount; i++) {
+        pages.push(i)
+    }
 
     return (
         <div>
-            { props.arrayUsers.map(user => <div key={user.id}>
+            <div>
+                {pages.map(page => <span onClick={() => onClickSelected}>{page}</span>)}
+            </div>
+            {props.arrayUsers.map(user => <div key={user.id}>
                 <div>{user.name}</div>
                 <div>{user.status}</div>
                 <div>
