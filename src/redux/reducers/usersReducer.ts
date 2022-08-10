@@ -40,9 +40,9 @@ const initialState = {
         // },
     // ] as UserType[],
     ] as UsersResponseType[],
-    pageSize: 5,
-    totalCount: 30,
-    currentPage: 1,
+    pageSize: 7,
+    totalCount: 0,
+    currentPage: 222,
 };
 
 export type InitialStateType = typeof initialState;
@@ -53,8 +53,12 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
             return {
                 ...state,
                 // arrayUsers: [...state.arrayUsers, ...action.users]
-                arrayUsers: [...state.arrayUsers]
+                arrayUsers: [...action.users],
             };
+        case 'SET_USERS_TOTAL_COUNT':
+            return {
+                ...state, totalCount: action.totalCount,
+            }
         case 'FOLLOW':
             return {
                 ...state,
@@ -77,7 +81,13 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
 export const setUsersAC = (users: UsersResponseType[]) => {
     return {
         type: 'SET_USERS',
-        users
+        users,
+    } as const
+}
+export const setUsersTotalCountAC = (totalCount: number) => {
+    return {
+        type: 'SET_USERS_TOTAL_COUNT',
+        totalCount,
     } as const
 }
 export const followUserAC = (userID: number) => {
@@ -100,6 +110,7 @@ export const selectPageAC = (selectedPage: number) => {
 }
 
 type SetUsersActionType = ReturnType<typeof setUsersAC>;
+type SetUsersTotalCountActionType = ReturnType<typeof setUsersTotalCountAC>;
 type FollowUserActionType = ReturnType<typeof followUserAC>;
 type UnfollowUserActionType = ReturnType<typeof unfollowUserAC>;
 type SelectPageActionType = ReturnType<typeof selectPageAC>;
@@ -108,4 +119,5 @@ export type UsersActionsType =
     FollowUserActionType |
     UnfollowUserActionType |
     SetUsersActionType |
+    SetUsersTotalCountActionType |
     SelectPageActionType;
