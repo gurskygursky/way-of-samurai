@@ -1,58 +1,19 @@
 import {UsersResponseType} from './../../components/users/Users';
 
-export  type UserType = {
-    id: number;
-    firstName: string;
-    secondName: string;
-    status: string;
-    isFollow: boolean;
-    location: {
-        country: string;
-        city: string;
-    }
-}
-
 const initialState = {
-    arrayUsers: [
-        // {
-        //     id: 1,
-        //     firstName: 'My first post!',
-        //     secondName: '',
-        //     status: '',
-        //     isFollow: true,
-        //     location: {country: 'Belarus', city: 'Minsk'}
-        // },
-        // {
-        //     id: 2,
-        //     firstName: 'My first post!',
-        //     secondName: '',
-        //     status: '',
-        //     isFollow: false,
-        //     location: {country: 'Belarus', city: 'Minsk'}
-        // },
-        // {
-        //     id: 3,
-        //     firstName: 'My first post!',
-        //     secondName: '',
-        //     status: '',
-        //     isFollow: true,
-        //     location: {country: 'Belarus', city: 'Minsk'}
-        // },
-    // ] as UserType[],
-    ] as UsersResponseType[],
+    arrayUsers: [] as UsersResponseType[],
     pageSize: 7,
     totalCount: 0,
     currentPage: 222,
 };
 
-export type InitialStateType = typeof initialState;
+type InitialStateType = typeof initialState;
 
 export const usersReducer = (state: InitialStateType = initialState, action: UsersActionsType): InitialStateType => {
     switch (action.type) {
         case 'SET_USERS':
             return {
                 ...state,
-                // arrayUsers: [...state.arrayUsers, ...action.users]
                 arrayUsers: [...action.users],
             };
         case 'SET_USERS_TOTAL_COUNT':
@@ -62,12 +23,12 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
         case 'FOLLOW':
             return {
                 ...state,
-                arrayUsers: state.arrayUsers.map(user => user.id === action.userID ? {...user, isFollow: true} : user)
+                arrayUsers: state.arrayUsers.map(user => user.id === action.userID ? {...user, followed: true} : user)
             };
         case 'UNFOLLOW':
             return {
                 ...state,
-                arrayUsers: state.arrayUsers.map(user => user.id === action.userID ? {...user, isFollow: false} : user)
+                arrayUsers: state.arrayUsers.map(user => user.id === action.userID ? {...user, followed: false} : user)
             };
             case 'SELECT_PAGE':
                 return {
@@ -77,7 +38,7 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
             return state;
     }
 }
-// export const setUsersAC = (users: UserType[]) => {
+
 export const setUsersAC = (users: UsersResponseType[]) => {
     return {
         type: 'SET_USERS',

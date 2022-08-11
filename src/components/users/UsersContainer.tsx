@@ -7,18 +7,15 @@ import {
     selectPageAC,
     setUsersAC, setUsersTotalCountAC,
     unfollowUserAC,
-    UserType
 } from './../../redux/reducers/usersReducer';
 
 type MapStateToPropsType = {
-    // arrayUsers: UserType[],
     arrayUsers: UsersResponseType[],
     currentPage: number,
     pageSize: number,
     totalCount: number,
 }
 type MapDispatchToPropsType = {
-    // setUsers: (users: UserType[]) => void;
     setUsers: (users: UsersResponseType[]) => void;
     setUsersTotalCount: (totalCount: number) => void;
     follow: (userID: number) => void;

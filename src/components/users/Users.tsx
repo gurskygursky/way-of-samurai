@@ -7,13 +7,14 @@ type UsersPhotosResponseType = {
     small: string;
     large: string;
 }
+
 export type UsersResponseType = {
-        name: string;
-        id: number;
-        uniqueUrlName: null;
-        photos: UsersPhotosResponseType;
-        status: null;
-        followed: boolean;
+    name: string;
+    id: number;
+    uniqueUrlName: null;
+    photos: UsersPhotosResponseType;
+    status: null;
+    followed: boolean;
     // totalCount: number;
     // error: string | null;
 }
@@ -29,57 +30,14 @@ export const Users = (props: UserContainerPropsType) => {
             }
         }
     , []);
-    // useEffect(() => {
-    //             axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
-    //                 .then(response => props.setUsersTotalCount(response.data.totalCount))
-    //                 .catch((error: string) => error);
-    //     }
-    // , []);
-    // useEffect(() => {
-    //         if (props.arrayUsers.length === 0) {
-    //             axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
-    //                 .then(response => props.setUsersTotalCount(response.data.totalCount))
-    //                 .catch((error: string) => error);
-    //         }
-    //     }
-    // , []);
-
-    // if (props.arrayUsers.length === 0) {
-    //     axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
-    //         .then(response => props.setUsers(response.data.items));
-        // props.setUsers([
-        //     {
-        //         id: 1,
-        //         firstName: 'My first post!',
-        //         secondName: '',
-        //         status: '',
-        //         isFollow: true,
-        //         location: {country: 'Belarus', city: 'Minsk'}
-        //     },
-        //     {
-        //         id: 2,
-        //         firstName: 'My first post!',
-        //         secondName: '',
-        //         status: '',
-        //         isFollow: false,
-        //         location: {country: 'Belarus', city: 'Minsk'}
-        //     },
-        //     {
-        //         id: 3,
-        //         firstName: 'My first post!',
-        //         secondName: '',
-        //         status: '',
-        //         isFollow: true,
-        //         location: {country: 'Belarus', city: 'Minsk'}
-        //     },
-        // ])
-    // }
 
     const onClickFollow = (userID: number) => {
         props.follow(userID);
+        console.log(userID)
     }
     const onClickUnfollow = (userID: number) => {
         props.unfollow(userID);
+        console.log(userID)
     }
     const onClickSelected = (selectedPage: number) => {
         console.log(selectedPage)
@@ -99,7 +57,7 @@ export const Users = (props: UserContainerPropsType) => {
             <div>
                 {pages.map(page => <span style={{cursor: 'pointer'}} onClick={() => onClickSelected(page)}>{page}</span>)}
             </div>
-            {props.arrayUsers.map(user => <div style={{padding: '10px'}} key={user.id}>
+            {props.arrayUsers.map((user)  => <div style={{padding: '10px'}} key={user.id}>
                 <div>{user.name}</div>
                 <img style={{maxWidth: '128px', maxHeight: '128px'}}
                      src={user.photos.small ? user.photos.large : noAvatar}
