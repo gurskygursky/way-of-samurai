@@ -5,16 +5,16 @@ import {connect} from 'react-redux';
 import {
     followUserAC,
     selectPageAC,
-    setUsersAC, setUsersTotalCountAC,
+    setUsersAC, setUsersTotalCountAC, ToggleIsFetchingAC,
     unfollowUserAC,
 } from './../../redux/reducers/usersReducer';
-import React from 'react';
 
 type MapStateToPropsType = {
     arrayUsers: UsersResponseType[],
     currentPage: number,
     pageSize: number,
     totalCount: number,
+    isFetching: boolean,
 }
 type MapDispatchToPropsType = {
     setUsers: (users: UsersResponseType[]) => void;
@@ -22,6 +22,7 @@ type MapDispatchToPropsType = {
     follow: (userID: number) => void;
     unfollow: (userID: number) => void;
     selectPage: (selectedPage: number) => void;
+    toggleIsFetching: (isFetching: boolean) => void;
 }
 export type UserContainerPropsType = MapStateToPropsType & MapDispatchToPropsType;
 
@@ -31,6 +32,7 @@ const mapStateToProps = (state: StoreType): MapStateToPropsType => {
         currentPage: state.usersReducer.currentPage,
         pageSize: state.usersReducer.pageSize,
         totalCount: state.usersReducer.totalCount,
+        isFetching: state.usersReducer.isFetching,
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
@@ -49,7 +51,10 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
         },
         selectPage: (selectedPage: number) => {
             dispatch(selectPageAC(selectedPage));
-        }
+        },
+        toggleIsFetching: (isFetching: boolean) => {
+            dispatch(ToggleIsFetchingAC(isFetching));
+        },
     }
 }
 export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
