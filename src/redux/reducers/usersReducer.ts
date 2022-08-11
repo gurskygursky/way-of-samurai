@@ -4,7 +4,7 @@ const initialState = {
     arrayUsers: [] as UsersResponseType[],
     pageSize: 7,
     totalCount: 0,
-    currentPage: 222,
+    currentPage: 1,
 };
 
 type InitialStateType = typeof initialState;

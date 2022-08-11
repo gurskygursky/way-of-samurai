@@ -8,6 +8,7 @@ import {Messages} from './components/messages/Messages';
 import {Route, Routes} from 'react-router-dom';
 import {ActionsType, StoreType} from './redux/redux-store';
 import {UsersContainer} from './components/users/UsersContainer';
+import {Users} from './components/users/Users';
 
 type AppPropsType = {
     // store: StoreType;

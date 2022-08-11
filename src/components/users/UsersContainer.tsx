@@ -8,6 +8,7 @@ import {
     setUsersAC, setUsersTotalCountAC,
     unfollowUserAC,
 } from './../../redux/reducers/usersReducer';
+import React from 'react';
 
 type MapStateToPropsType = {
     arrayUsers: UsersResponseType[],
