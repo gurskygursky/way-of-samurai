@@ -69,49 +69,49 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
     }
 }
 
-export const setUsersAC = (users: UsersResponseType[]) => {
+export const setUsers = (users: UsersResponseType[]) => {
     return {
         type: 'SET_USERS',
         users,
     } as const
 }
-export const setUsersTotalCountAC = (totalCount: number) => {
+export const setUsersTotalCount = (totalCount: number) => {
     return {
         type: 'SET_USERS_TOTAL_COUNT',
         totalCount,
     } as const
 }
-export const followUserAC = (userID: number) => {
+export const followUser = (userID: number) => {
     return {
         type: 'FOLLOW',
         userID,
     } as const
 }
-export const unfollowUserAC = (userID: number) => {
+export const unfollowUser = (userID: number) => {
     return {
         type: 'UNFOLLOW',
         userID,
     } as const
 }
-export const selectPageAC = (selectedPage: number) => {
+export const selectPage = (selectedPage: number) => {
     return {
         type: 'SELECT_PAGE',
         selectedPage,
     } as const
 }
-export const ToggleIsFetchingAC = (isFetching: boolean) => {
+export const toggleIsFetching = (isFetching: boolean) => {
     return {
         type: 'TOGGLE_IS_FETCHING',
         isFetching,
     } as const
 }
 
-type SetUsersActionType = ReturnType<typeof setUsersAC>;
-type SetUsersTotalCountActionType = ReturnType<typeof setUsersTotalCountAC>;
-type FollowUserActionType = ReturnType<typeof followUserAC>;
-type UnfollowUserActionType = ReturnType<typeof unfollowUserAC>;
-type SelectPageActionType = ReturnType<typeof selectPageAC>;
-type ToggleIsFetchingActionType = ReturnType<typeof ToggleIsFetchingAC>;
+type SetUsersActionType = ReturnType<typeof setUsers>;
+type SetUsersTotalCountActionType = ReturnType<typeof setUsersTotalCount>;
+type FollowUserActionType = ReturnType<typeof followUser>;
+type UnfollowUserActionType = ReturnType<typeof unfollowUser>;
+type SelectPageActionType = ReturnType<typeof selectPage>;
+type ToggleIsFetchingActionType = ReturnType<typeof toggleIsFetching>;
 
 export type UsersActionsType =
     FollowUserActionType |

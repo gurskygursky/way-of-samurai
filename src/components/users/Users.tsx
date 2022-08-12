@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
-import {UserContainerPropsType} from './../../components/users/UsersContainer';
+import {
+    UsersContainerPropsType,
+} from './../../components/users/UsersContainer';
 import axios from 'axios';
 import noAvatar from './../../assets/images/noAvatar.png';
 import {StoreType} from '../../redux/redux-store';
@@ -19,7 +21,7 @@ export type UsersResponseType = {
     followed: boolean,
 }
 
-export class Users extends React.Component<UserContainerPropsType, StoreType> {
+export class Users extends React.Component<UsersContainerPropsType> {
 
     componentDidMount() {
         if (this.props.arrayUsers.length === 0) {
@@ -34,11 +36,11 @@ export class Users extends React.Component<UserContainerPropsType, StoreType> {
     }
 
     onClickFollow = (userID: number) => {
-        this.props.follow(userID);
+        this.props.followUser(userID);
         console.log(userID)
     }
     onClickUnfollow = (userID: number) => {
-        this.props.unfollow(userID);
+        this.props.unfollowUser(userID);
         console.log(userID)
     }
     onClickSelected = (selectedPage: number) => {
