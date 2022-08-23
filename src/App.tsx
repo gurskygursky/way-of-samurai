@@ -9,6 +9,7 @@ import {Route, Routes} from 'react-router-dom';
 import {ActionsType, StoreType} from './redux/redux-store';
 import {UsersContainer} from './components/users/UsersContainer';
 import {Users} from './components/users/Users';
+import {ProfileContainer} from './components/profile/ProfileContainer';
 
 type AppPropsType = {
     // store: StoreType;
@@ -27,7 +28,7 @@ export const App = (props: AppPropsType) => {
             <Footer/>
             <div className={'app-wrapper-content'}>
                 <Routes>
-                    <Route path="/profile" element={<Profile
+                    <Route path="/profile" element={<ProfileContainer
                         // arrayPosts={profilePage.arrayPosts}
                         //                                      dispatch={props.dispatch.bind(props.store)}
                         //                                      newPost={props.store.profileReducer.newPost}

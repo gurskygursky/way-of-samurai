@@ -1,3 +1,5 @@
+import {UserProfileResponseType} from './../../components/profile/ProfileContainer';
+
 export type PostType = {
     id: number;
     postText: string;
@@ -13,6 +15,7 @@ const initialState = {
         {id: 2, postText: 'My second post!', likesCount: 10},
     ] as PostType[],
     newPost: 'newpost',
+    profile: {} as UserProfileResponseType,
 };
 
 export type InitialStateType = typeof initialState;
@@ -38,6 +41,10 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             // state.newPost = action.newPostText;
             // return state;
         }
+        case 'SET_USER_PROFILE':
+            return {
+                ...state, profile: action.profile,
+            }
         default:
             return state;
     }
@@ -46,7 +53,8 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 //action types
 export type ProfileActionsType =
     ReturnType<typeof addPostAC> |
-    ReturnType<typeof updateNewPostAC>;
+    ReturnType<typeof updateNewPostAC> |
+    ReturnType<typeof setUserProfileAC>;
 
 //action creator
 export const addPostAC = () => {
@@ -58,5 +66,11 @@ export const updateNewPostAC = (newPostText: string) => {
     return {
         type: 'UPDATE_NEW_POST',
         newPostText,
+    } as const
+}
+export const setUserProfileAC = (profile: UserProfileResponseType) => {
+    return {
+        type: 'SET_USER_PROFILE',
+        profile,
     } as const
 }
