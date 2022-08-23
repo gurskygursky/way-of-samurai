@@ -13,10 +13,14 @@ export const ProfileDescription = (props: ProfileDescriptionPropsType) => {
 
     return (
         <div>
-            <div>{props.profile.photos.large ? props.profile.photos.small : noAvatar}</div>
+            {/*<div>{props.profile.photos.small === null*/}
+            {/*    ? <img src={noAvatar} alt={"none_avatar_image"}/>*/}
+            {/*    : <img src={props.profile.photos.small} alt={'small_avatar_image'}/>*/}
+            {/*}*/}
+            {/*</div>*/}
             <div>{props.profile.fullName}</div>
             <div>{props.profile.lookingForAJobDescription}</div>
-            <div>{props.profile.lookingForAJob}</div>
+            <div>{JSON.stringify(props.profile.lookingForAJob)}</div>
             <div>{props.profile.userId}</div>
             {/*<div>PROFILE IMAGE BACKGROUND</div>*/}
             {/*<div>*/}

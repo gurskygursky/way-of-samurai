@@ -17,8 +17,8 @@ export type ContactsResponseType = {
     mainLink: Nullable
 }
 export type UsersPhotosResponseType = {
-    small: Nullable;
-    large: Nullable;
+    small: string;
+    large: string;
 }
 export type UserProfileResponseType = {
     aboutMe: string;
