@@ -6,6 +6,7 @@ import axios from 'axios';
 import noAvatar from './../../assets/images/noAvatar.png';
 import {StoreType} from '../../redux/redux-store';
 import {Preloader} from '../../assets/preloader/Preloader';
+import {NavLink} from 'react-router-dom';
 
 type UsersPhotosResponseType = {
     small: string;
@@ -71,6 +72,11 @@ export class Users extends React.Component<UsersContainerPropsType> {
                             {this.props.arrayUsers.map((user: UsersResponseType) =>
                                 <div style={{padding: '10px'}} key={user.id}>
                                     <div>{user.name}</div>
+                                    {/*<NavLink to={'/profile/' + user.id}>*/}
+                                    {/*    <img style={{maxWidth: '128px', maxHeight: '128px'}}*/}
+                                    {/*         src={user.photos.small !== null ? user.photos.small : noAvatar}*/}
+                                    {/*         alt={'userPhoto'}/>*/}
+                                    {/*</NavLink>*/}
                                     <img style={{maxWidth: '128px', maxHeight: '128px'}}
                                          src={user.photos.small ? user.photos.large : noAvatar}
                                          alt={'none avatar img'}

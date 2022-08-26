@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Profile} from './Profile';
 import {connect, ConnectedProps} from 'react-redux';
 import {StoreType} from './../../redux/redux-store';
 import {PostType, setUserProfileAC} from '../../redux/reducers/profileReducer';
+import {
+    useLocation,
+    useNavigate,
+    useParams,
+} from 'react-router-dom';
 
 type Nullable = string | null;
 
@@ -34,12 +39,14 @@ type MapStateToPropsType = {
     profile: UserProfileResponseType;
     arrayPosts: PostType[],
     newPost: string,
+    router: any
 }
 const mapStateToProps = (state: StoreType): MapStateToPropsType => {
     return {
         profile: state.profileReducer.profile,
         arrayPosts: state.profileReducer.arrayPosts,
         newPost: state.profileReducer.newPost,
+        router: withRouter(Profile)
     }
 }
 
@@ -47,5 +54,23 @@ export const ConnectComponent = connect(mapStateToProps, {
     setUserProfileAC
 });
 
+function withRouter(Component: any) {
+    function ComponentWithRouterProp(props: any) {
+
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+
+        return (
+            <Component
+                {...props}
+                router={{ location, navigate, params }}
+            />
+        );
+    }
+    return ComponentWithRouterProp;
+}
+
 export type ProfileContainerPropsType = ConnectedProps<typeof ConnectComponent>;
-export const ProfileContainer = ConnectComponent(Profile);
+// export const ProfileContainer = ConnectComponent(Profile);
+export const ProfileContainer = ConnectComponent(withRouter(Profile));

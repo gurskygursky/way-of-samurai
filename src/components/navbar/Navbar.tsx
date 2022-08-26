@@ -1,11 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
+import {ProfileContainer} from './../../components/profile/ProfileContainer';
 
 export const Navbar = () => {
     return (
         <div className={'nav'}>
             <div style={{padding: '10px 0 0 10px'}}>
                 <div>
+
                     <Link to={'/profile'}>Profile</Link>
                     {/*<a href={'/profile'}>Profile</a>*/}
                 </div>

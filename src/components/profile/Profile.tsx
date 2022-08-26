@@ -17,9 +17,11 @@ type ProfilePropsType = {
 export const Profile = (props: ProfileContainerPropsType) => {
 
     useEffect(() => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/ + ${2}`)
             .then(response => props.setUserProfileAC(response.data));
     }, []);
+
+    let userID = props.profile.userId;
 
     if (!props.profile) {
         return (
