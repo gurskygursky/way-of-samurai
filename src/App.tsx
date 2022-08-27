@@ -28,6 +28,7 @@ export const App = (props: AppPropsType) => {
             <Footer/>
             <div className={'app-wrapper-content'}>
                 <Routes>
+                    <Route path={'/profile/:userId'} element={<ProfileContainer/>}/>
                     <Route path="/profile" element={<ProfileContainer
                         // arrayPosts={profilePage.arrayPosts}
                         //                                      dispatch={props.dispatch.bind(props.store)}

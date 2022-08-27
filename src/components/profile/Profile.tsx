@@ -2,26 +2,31 @@ import axios from 'axios';
 import React, {useEffect} from 'react';
 import {Posts} from '../../components/posts/Posts';
 import {ProfileDescription} from '../../components/profile/ProfileDescription';
-import {PostType} from '../../redux/reducers/profileReducer';
+import {PostType, setUserProfileAC} from '../../redux/reducers/profileReducer';
 import {ActionsType} from '../../redux/redux-store';
 import {PostsContainer} from './../../components/posts/PostsContainer';
 import {ProfileContainerPropsType} from './ProfileContainer';
 import {Preloader} from './../../assets/preloader/Preloader';
 import noAvatar from './../../assets/images/noAvatar.png';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 
 type ProfilePropsType = {
     // arrayPosts: PostType[];
     // newPost: string;
     // dispatch: (action: ActionsType) => void;
 }
-export const Profile = (props: ProfileContainerPropsType) => {
+export const Profile = (props: any) => {
 
-    useEffect(() => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/ + ${2}`)
-            .then(response => props.setUserProfileAC(response.data));
-    }, []);
+    let userID = props.router.params.userId;
 
-    let userID = props.profile.userId;
+    if (!userID) {
+        userID = 18933;
+    }
+
+        useEffect(() => {
+            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userID)
+                .then(response => props.setUserProfileAC(response.data));
+        }, []);
 
     if (!props.profile) {
         return (
