@@ -13,9 +13,9 @@ export const ProfileDescription = (props: ProfileDescriptionPropsType) => {
 
     return (
         <div>
-            {/*<div>{props.profile.photos.small === null*/}
+            {/*<div>{props.profile.photos.large === null*/}
             {/*    ? <img src={noAvatar} alt={"none_avatar_image"}/>*/}
-            {/*    : <img src={props.profile.photos.small} alt={'small_avatar_image'}/>*/}
+            {/*    : <img src={props.profile.photos.large} alt={'small_avatar_image'}/>*/}
             {/*}*/}
             {/*</div>*/}
             <div>{props.profile.fullName}</div>

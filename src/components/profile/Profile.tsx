@@ -34,6 +34,8 @@ export const Profile = (props: any) => {
         )
     }
 
+    console.log(JSON.stringify(props.profile.photos))
+
     return (
         <div>
             {/*<div style={{maxWidth: '128px', maxHeight: '128px'}}>*/}
